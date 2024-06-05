@@ -1,7 +1,6 @@
 package GlobalSolution.BlueClean.model.alerta;
 
 import GlobalSolution.BlueClean.dto.alerta.CadastroAlerta;
-import GlobalSolution.BlueClean.dto.usuario.CadastroUsuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,7 +35,7 @@ public class Alerta {
     @Column(name = "ST_ALERTA", nullable = false, length = 20)
     private String status;
 
-    public  Alerta(CadastroAlerta alerta){
+    public Alerta(CadastroAlerta alerta){
         mensagem = alerta.mensagem();
         dtHora = alerta.dtHora();
         status = alerta.status();

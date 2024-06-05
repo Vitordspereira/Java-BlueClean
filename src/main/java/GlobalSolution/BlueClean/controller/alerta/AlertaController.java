@@ -5,13 +5,13 @@ import GlobalSolution.BlueClean.dto.alerta.DetalhesAlerta;
 import GlobalSolution.BlueClean.model.alerta.Alerta;
 import GlobalSolution.BlueClean.repository.alerta.AlertaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @RequestMapping("alertas")

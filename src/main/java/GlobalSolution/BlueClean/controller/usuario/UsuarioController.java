@@ -5,13 +5,13 @@ import GlobalSolution.BlueClean.dto.usuario.DetalhesUsuario;
 import GlobalSolution.BlueClean.model.usuario.Usuario;
 import GlobalSolution.BlueClean.repository.usuario.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @RequestMapping("usuarios")
