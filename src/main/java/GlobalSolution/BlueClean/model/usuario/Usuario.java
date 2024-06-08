@@ -1,12 +1,16 @@
 package GlobalSolution.BlueClean.model.usuario;
 
 import GlobalSolution.BlueClean.dto.usuario.CadastroUsuario;
+import GlobalSolution.BlueClean.model.alerta.Alerta;
+import GlobalSolution.BlueClean.model.dispositivo.Dispositivo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -34,6 +38,12 @@ public class Usuario {
 
     @Column(name = "TP_USUARIO", nullable = false, length = 20)
     private String tipo;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Alerta> alertas;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Dispositivo> dispositivos;
 
     public  Usuario(CadastroUsuario usuario){
         nome = usuario.nome();

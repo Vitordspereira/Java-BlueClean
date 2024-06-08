@@ -1,6 +1,7 @@
 package GlobalSolution.BlueClean.model.alerta;
 
 import GlobalSolution.BlueClean.dto.alerta.CadastroAlerta;
+import GlobalSolution.BlueClean.model.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,10 +36,21 @@ public class Alerta {
     @Column(name = "ST_ALERTA", nullable = false, length = 20)
     private String status;
 
+    @ManyToOne
+    @JoinColumn(name = "ID_USUARIO")
+    private Usuario usuario;
+
     public Alerta(CadastroAlerta alerta){
         mensagem = alerta.mensagem();
         dtHora = alerta.dtHora();
         status = alerta.status();
+    }
+
+    public Alerta(CadastroAlerta alerta, Usuario usuario){
+        mensagem = alerta.mensagem();
+        dtHora = alerta.dtHora();
+        status = alerta.status();
+        this.usuario = usuario;
     }
 
     public void atualizarDados(CadastroAlerta atualizacao){

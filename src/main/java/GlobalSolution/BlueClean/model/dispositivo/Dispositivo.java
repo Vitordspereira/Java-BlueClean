@@ -2,6 +2,8 @@ package GlobalSolution.BlueClean.model.dispositivo;
 
 import GlobalSolution.BlueClean.dto.dispositivo.CadastroDispositivo;
 import GlobalSolution.BlueClean.model.deteccao.Deteccao;
+import GlobalSolution.BlueClean.model.localizacao.Localizacao;
+import GlobalSolution.BlueClean.model.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,11 +41,35 @@ public class Dispositivo {
     @OneToMany(mappedBy = "dispositivo", cascade = CascadeType.ALL)
     private List<Deteccao> deteccaos;
 
+    @ManyToOne
+    @JoinColumn(name = "ID_USUARIO")
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "ID_LOCALIZACAO")
+    private Localizacao localizacao;
+
     public Dispositivo(CadastroDispositivo dispositivo){
         tipo = dispositivo.tipo();
         latitude = dispositivo.latitude();
         longitude = dispositivo.longitude();
         status = dispositivo.status();
+    }
+
+    public Dispositivo(CadastroDispositivo dispositivo, Usuario usuario){
+        tipo = dispositivo.tipo();
+        latitude = dispositivo.latitude();
+        longitude = dispositivo.longitude();
+        status = dispositivo.status();
+        this.usuario = usuario;
+    }
+
+    public Dispositivo(CadastroDispositivo dispositivo, Localizacao localizacao){
+        tipo = dispositivo.tipo();
+        latitude = dispositivo.latitude();
+        longitude = dispositivo.longitude();
+        status = dispositivo.status();
+        this.localizacao = localizacao;
     }
 
     public void atualizarDados(CadastroDispositivo atualizacao){

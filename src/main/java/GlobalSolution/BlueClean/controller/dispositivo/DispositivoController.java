@@ -10,6 +10,7 @@ import GlobalSolution.BlueClean.repository.deteccao.DeteccaoRepository;
 import GlobalSolution.BlueClean.repository.dispositivo.DispositivoRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,7 @@ public class DispositivoController {
     @Autowired
     private DeteccaoRepository deteccaoRepository;
 
+    //Listar todos os dispositivos
     @GetMapping
     public ResponseEntity<List<DetalhesDispositivo>> listar(Pageable pageable){
         var lista = dispositivoRepository.findAll(pageable)
@@ -37,12 +39,14 @@ public class DispositivoController {
         return ResponseEntity.ok(lista);
     }
 
+    //Listar dispositivo específico
     @GetMapping("{id}")
     public ResponseEntity<DetalhesDispositivo> buscar(@PathVariable("id") Long id){
         var dispositivo = dispositivoRepository.getReferenceById(id);
         return ResponseEntity.ok(new DetalhesDispositivo(dispositivo));
     }
 
+    //Cadastrar um dispositivo
     @PostMapping
     @Transactional
     public ResponseEntity<DetalhesDispositivo> cadastrar(@RequestBody CadastroDispositivo dispositivoPost,
@@ -66,6 +70,7 @@ public class DispositivoController {
         return ResponseEntity.created(uri).body(new DetalhesDeteccaoDispositivo(deteccao));
     }
 
+    //Alterar dispositivo específico
     @PutMapping("{id}")
     @Transactional
     public ResponseEntity<DetalhesDispositivo> atualizar(@PathVariable("id") Long id,
@@ -75,6 +80,7 @@ public class DispositivoController {
         return ResponseEntity.ok(new DetalhesDispositivo(dispositivo));
     }
 
+    //Deletar dispositivo específico
     @DeleteMapping("{id}")
     @Transactional
     public ResponseEntity<Void> deletar(@PathVariable("id") Long id){
