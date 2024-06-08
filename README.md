@@ -110,7 +110,9 @@ para classificar e quantificar os resíduos e analisar padrões de poluição.
 |PUT   |/alertas/id|Alterar uma detecção     |
 |DELETE|/alertas/id|Deletar uma detecção     |
 
+❗❗ Acesse o arquivo de requisições do postman <a href="BlueClean.postman_collection.json">AQUI</a> ❗❗
+
 <li>ACESSO AOS VIDEOS PITCH E FUNCIONAL DA APLICAÇÂO :exclamation:</li>
 <a href="https://www.youtube.com/watch?v=BzM0Lb2Ux_Q">Vídeo Funcional do Sistema</a>
 <br>
-<a href="https://www.youtube.com/watch?v=BzM0Lb2Ux_Q">Vídeo Pitch do projeto</a>
+<a href="https://youtu.be/mjy1jqSO3sU">Vídeo Pitch do projeto</a>
